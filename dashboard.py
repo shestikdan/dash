@@ -128,10 +128,18 @@ col1, col2 = st.columns(2)
 
 with col1:
     st.subheader('Распределение добавлений в корзину по группам')
-    group_counts = filtered_products.groupby('Группа').size()
+    group_counts = filtered_products.groupby('Группа').size().sort_values(ascending=False)
+    
+    # Выделяем топ 6 групп
+    top_6_groups = group_counts.head(6)
+    # Суммируем остальные группы
+    other_groups = pd.Series({'Другие': group_counts[6:].sum()})
+    # Объединяем топ 6 и "Другие"
+    final_group_counts = pd.concat([top_6_groups, other_groups])
+    
     fig_groups = px.pie(
-        values=group_counts.values, 
-        names=group_counts.index,
+        values=final_group_counts.values, 
+        names=final_group_counts.index,
         title='Распределение добавлений в корзину по группам товаров'
     )
     st.plotly_chart(fig_groups, use_container_width=True)
