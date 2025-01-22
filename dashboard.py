@@ -131,9 +131,9 @@ with col1:
     group_counts = filtered_products.groupby('Группа').size().sort_values(ascending=False)
     
     # Выделяем топ 6 групп
-    top_6_groups = group_counts.head(6)
+    top_6_groups = group_counts.head(10)
     # Суммируем остальные группы
-    other_groups = pd.Series({'Другие': group_counts[6:].sum()})
+    other_groups = pd.Series({'Другие': group_counts[10:].sum()})
     # Объединяем топ 6 и "Другие"
     final_group_counts = pd.concat([top_6_groups, other_groups])
     
