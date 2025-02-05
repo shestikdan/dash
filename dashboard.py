@@ -86,10 +86,20 @@ try:
     # Настройка макета
     fig1.update_layout(
         title='Топ-5 магазинов: сумма заказов и количество корзин',
-        yaxis=dict(title='Сумма заказов', titlefont=dict(color='#8884d8'), tickfont=dict(color='#8884d8')),
-        yaxis2=dict(title='Количество корзин', titlefont=dict(color='#82ca9d'), 
-                   tickfont=dict(color='#82ca9d'), overlaying='y', side='right'),
-        barmode='group'
+        yaxis=dict(
+            title='Сумма заказов',
+            title_font=dict(color='#8884d8'),
+            tickfont=dict(color='#8884d8')
+        ),
+        yaxis2=dict(
+            title='Количество корзин',
+            title_font=dict(color='#82ca9d'),
+            tickfont=dict(color='#82ca9d'),
+            overlaying='y',
+            side='right'
+        ),
+        barmode='group',
+        height=600
     )
 
     st.plotly_chart(fig1, use_container_width=True)
@@ -99,7 +109,8 @@ try:
         top_5_stores,
         x='Магазин',
         y='Средний чек',
-        title='Средний чек по магазинам'
+        title='Средний чек по магазинам',
+        height=400
     )
     fig2.update_traces(marker_color='#ffc658')
     st.plotly_chart(fig2, use_container_width=True)
@@ -139,9 +150,19 @@ try:
     # Настройка макета
     fig3.update_layout(
         title='Динамика брошенных корзин по дням',
-        yaxis=dict(title='Сумма заказов', titlefont=dict(color='#8884d8'), tickfont=dict(color='#8884d8')),
-        yaxis2=dict(title='Количество корзин', titlefont=dict(color='#82ca9d'), 
-                   tickfont=dict(color='#82ca9d'), overlaying='y', side='right')
+        yaxis=dict(
+            title='Сумма заказов',
+            title_font=dict(color='#8884d8'),
+            tickfont=dict(color='#8884d8')
+        ),
+        yaxis2=dict(
+            title='Количество корзин',
+            title_font=dict(color='#82ca9d'),
+            tickfont=dict(color='#82ca9d'),
+            overlaying='y',
+            side='right'
+        ),
+        height=500
     )
 
     st.plotly_chart(fig3, use_container_width=True)
